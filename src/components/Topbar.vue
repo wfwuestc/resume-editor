@@ -1,12 +1,21 @@
 <template>
-	<div id="topbar">
-		i am topbar
-	</div>
+  <div id="topbar">
+    <div class="logo">
+      Resume Editor
+    </div>
+    <div class="action">
+      <el-button>登录</el-button>
+      <el-button type="primary">注册</el-button>
+    </div>
+  </div>
 </template>
-<style>
-	#topbar {
-		border: 1px solid green;
-		min-height: 100px;
+<style lang="scss">
+  #topbar {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-	}
+  }
 </style>
