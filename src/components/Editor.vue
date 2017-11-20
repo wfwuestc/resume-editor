@@ -1,71 +1,45 @@
 <template>
-	<div id="editor">
+  <div id="editor">
     <nav>
       <ul class="nav-bar">
-        <li v-bind:class="{active: currentTab === 0}" v-on:click="currentTab = 0">
+        <li v-for="i in [0,1,2,3,4]"
+            v-bind:class="{active: currentTab === i}"
+            v-on:click="currentTab = i">
           <svg class="icon" aria-hidden="true" style="width: 50px; height: 50px">
-            <use xlink:href="#icon-credential"></use>
-          </svg>
-        </li>
-        <li v-bind:class="{active: currentTab === 1}" v-on:click="currentTab = 1">
-          <svg class="icon" aria-hidden="true" style="width: 50px; height: 50px">
-            <use xlink:href="#icon-xueli"></use>
-          </svg>
-        </li>
-        <li v-bind:class="{active: currentTab === 2}" v-on:click="currentTab = 2">
-          <svg class="icon" aria-hidden="true" style="width: 50px; height: 50px">
-            <use xlink:href="#icon-skill"></use>
-          </svg>
-        </li>
-        <li v-bind:class="{active: currentTab === 3}" v-on:click="currentTab = 3">
-          <svg class="icon" aria-hidden="true" style="width: 50px; height: 50px">
-            <use xlink:href="#icon-work"></use>
-          </svg>
-        </li>
-        <li v-bind:class="{active: currentTab === 4}" v-on:click="currentTab = 4">
-          <svg class="icon" aria-hidden="true" style="width: 50px; height: 50px">
-            <use xlink:href="#icon-fav"></use>
+            <use v-bind:xlink:href="`#icon-${icon[i]}`"></use>
           </svg>
         </li>
       </ul>
     </nav>
     <ul class="edit-content">
-      <li v-bind:class="{active: currentTab === 0}">
+      <li v-for="i in [0,1,2,3,4]"
+          v-bind:class="{active: currentTab === i}">
         tab0
       </li>
-      <li v-bind:class="{active: currentTab === 1}">
-        tab1
-      </li>
-      <li v-bind:class="{active: currentTab === 2}">
-        tab2
-      </li>
-      <li v-bind:class="{active: currentTab === 3}">
-        tab3
-      </li>
-      <li v-bind:class="{active: currentTab === 4}">
-        tab4
-      </li>
     </ul>
-	</div>
+  </div>
 </template>
 <script>
   export default {
-    data () {
+    data() {
       return {
-        currentTab: 0
+        currentTab: 0,
+        icon: ['credential', 'xueli', 'skill', 'work', 'fav'],
       }
-    }
+    },
   }
 </script>
 <style lang="scss">
-	#editor {
-		border: 1px solid black;
+  #editor {
+    border: 1px solid black;
     width: 30em;
     margin: 16px 8px 16px 16px;
     background: white;
-	}
+  }
+
   .icon {
-    width: 1em; height: 1em;
+    width: 1em;
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
@@ -86,6 +60,7 @@
       }
     }
   }
+
   .edit-content {
     li {
       display: none;
