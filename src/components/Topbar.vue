@@ -16,6 +16,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    box-shadow: 0 0 53px 3px;
+    z-index: 1;
   }
 </style>
