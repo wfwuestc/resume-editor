@@ -18,37 +18,21 @@
         <ProfileEditor v-bind:profile="profile"/>
       </li>
       <li v-bind:class="{active: currentTab === 1}">
-        <StudyEditor v-bind:study="study"/>
+        <h2>学习情况</h2>
+        <ItemEditor v-bind:items="study" v-bind:labels="{school: '学校',degree: '学位',specialty: '专业'}"/>
       </li>
       <li v-bind:class="{active: currentTab === 2}">
         <h2>职业技能</h2>
-        <el-form ref="form" :model="skill" label-width="80px">
-          <el-form-item label="名称">
-            <el-input v-model="skill.type"></el-input>
-          </el-form-item>
-          <el-form-item label="熟练度">
-            <el-input v-model="skill.level"></el-input>
-          </el-form-item>
-        </el-form>
+        <ItemEditor v-bind:items="skill" v-bind:labels="{type: '技能名称',level:'熟练程度'}"/>
+
       </li>
       <li v-bind:class="{active: currentTab === 3}">
         <h2>工作经验</h2>
-        <el-form ref="form" :model="work" label-width="80px">
-          <el-form-item label="名称">
-            <el-input v-model="work.company"></el-input>
-          </el-form-item>
-          <el-form-item label="熟练度">
-            <el-input v-model="work.position"></el-input>
-          </el-form-item>
-        </el-form>
+        <ItemEditor v-bind:items="work" v-bind:labels="{company: '公司名称',position:'职位',content:'工作内容'}"/>
       </li>
       <li v-bind:class="{active: currentTab === 4}">
         <h2>兴趣爱好</h2>
-        <el-form ref="form" :model="fav" label-width="80px">
-          <el-form-item label="名称">
-            <el-input v-model="fav.item"></el-input>
-          </el-form-item>
-        </el-form>
+        <ItemEditor v-bind:items="fav" v-bind:labels="{item: '项目'}"/>
       </li>
     </ul>
 
@@ -57,9 +41,9 @@
 </template>
 <script>
   import ProfileEditor from './ProfileEditor.vue'
-  import StudyEditor from './StudyEditor.vue'
+  import ItemEditor from './ItemEditor.vue'
   export default {
-    components:{ProfileEditor,StudyEditor},
+    components:{ProfileEditor,ItemEditor},
     data() {
       return {
         currentTab: 0,
@@ -75,17 +59,18 @@
           degree: '',
           specialty: '',
         },],
-        skill: {
+        skill: [{
           type: '',
           level: '',
-        },
-        work: {
+        },],
+        work: [{
           company: '',
           position: '',
-        },
-        fav: {
+          content:''
+        },],
+        fav: [{
           item: '',
-        },
+        },]
       }
     }, created() {
       let _this = this
