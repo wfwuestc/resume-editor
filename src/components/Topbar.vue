@@ -32,11 +32,15 @@
 
   export default {
     components: {
-      Dialog,SignUpForm
+      Dialog, SignUpForm,
     },
     methods: {
       preview() {
         this.$emit('preview')
+      },
+      login(user) {
+        this.signUpDialogVisible = false
+        this.$store.commit('setUser', user)
       },
     },
     data() {

@@ -59,4 +59,5 @@ export default new Vuex.Store({
       Object.assign(state.user, payload)
       console.log(state.user)
     },
-  })
+  },
+})
