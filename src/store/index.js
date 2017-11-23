@@ -30,6 +30,10 @@ export default new Vuex.Store({
       fav: [{
         item: '',
       },],
+      user: {
+        id: '',
+        username: '',
+      },
     },
     currentTab: 0,
     icon: ['credential', 'xueli', 'skill', 'work', 'fav'],
@@ -51,5 +55,8 @@ export default new Vuex.Store({
     initState(state, payload) {
       Object.assign(state, payload)
     },
-  },
-})
+    setUser(state, payload) {
+      Object.assign(state.user, payload)
+      console.log(state.user)
+    },
+  })

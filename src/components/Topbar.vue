@@ -4,8 +4,12 @@
       Resume Editor
     </div>
     <div class="action">
+      <span>{{user}}</span>
       <el-button>登录</el-button>
-      <el-button type="primary">注册</el-button>
+      <el-button type="primary" @click.prevent="signUpDialogVisible = true">注册</el-button>
+      <Dialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+        <SignUpForm @success="login($event)"/>
+      </Dialog>
       <el-button v-on:click="preview">预览</el-button>
 
     </div>
@@ -23,11 +27,27 @@
   }
 </style>
 <script>
+  import Dialog from './Dialog'
+  import SignUpForm from './SignUpForm'
+
   export default {
-    methods:{
-      preview(){
+    components: {
+      Dialog,SignUpForm
+    },
+    methods: {
+      preview() {
         this.$emit('preview')
+      },
+    },
+    data() {
+      return {
+        signUpDialogVisible: false,
       }
-    }
+    },
+    computed: {
+      user() {
+        return this.$store.state.user
+      },
+    },
   }
 </script>
