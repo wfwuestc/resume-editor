@@ -6,6 +6,8 @@
     <div class="action">
       <el-button>登录</el-button>
       <el-button type="primary">注册</el-button>
+      <el-button v-on:click="preview">预览</el-button>
+
     </div>
   </div>
 </template>
@@ -20,3 +22,12 @@
     z-index: 1;
   }
 </style>
+<script>
+  export default {
+    methods:{
+      preview(){
+        this.$emit('preview')
+      }
+    }
+  }
+</script>

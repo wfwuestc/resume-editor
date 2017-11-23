@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <h2>{{title}}</h2>
     <el-form ref="form" label-width="80px">
       <div class="container" v-for="(item,index) in this.items">
         <el-form-item v-for="key in keys" :key="key" v-bind:label="labels[key] || key">
@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    props:["items","labels"],
+    props:["items","labels","title"],
     computed: {
       keys(){
         return Object.keys(this.items[0])
