@@ -71,7 +71,7 @@
     height: 100%;
     background: #DDD;
   }
-  main {
+  #app main {
     display: flex;
     flex: 1;
   }
