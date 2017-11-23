@@ -12,39 +12,17 @@
   import Topbar from './components/Topbar'
   import Editor from './components/Editor'
   import Preview from './components/Preview'
+  import store from './store/index'
 
   export default {
     data(){
       return{
         previewMode: false,
-        resume:{
-          profile: {
-            name: '',
-            region: '',
-            date: '',
-            city: '',
-          },
-          study: [{
-            school: '',
-            degree: '',
-            specialty: '',
-          },],
-          skill: [{
-            type: '',
-            level: '',
-          },],
-          work: [{
-            company: '',
-            position: '',
-            content:''
-          },],
-          fav: [{
-            item: '',
-          },]
-        }
+
 
       }
     },
+    store,
     components: {
       Topbar, Editor, Preview,
     },

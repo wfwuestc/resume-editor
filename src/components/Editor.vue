@@ -15,20 +15,22 @@
     <ul class="edit-content">
       <li v-bind:class="{active: currentTab === 0}">
         <h2>个人信息</h2>
-        <ProfileEditor v-bind:profile="resume.profile"/>
+        <ProfileEditor v-bind:profile="resume().profile"/>
       </li>
       <li v-bind:class="{active: currentTab === 1}">
-        <ItemEditor v-bind:items="resume.study" v-bind:labels="{school: '学校',degree: '学位',specialty: '专业'}" title="学业情况"/>
+        <ItemEditor v-bind:items="resume().study" v-bind:labels="{school: '学校',degree: '学位',specialty: '专业'}"
+                    title="学业情况"/>
       </li>
       <li v-bind:class="{active: currentTab === 2}">
-        <ItemEditor v-bind:items="resume.skill" v-bind:labels="{type: '技能名称',level:'熟练程度'}" title="职业技能"/>
+        <ItemEditor v-bind:items="resume().skill" v-bind:labels="{type: '技能名称',level:'熟练程度'}" title="职业技能"/>
 
       </li>
       <li v-bind:class="{active: currentTab === 3}">
-        <ItemEditor v-bind:items="resume.work" v-bind:labels="{company: '公司名称',position:'职位',content:'工作内容'}" title="工作经验"/>
+        <ItemEditor v-bind:items="resume().work" v-bind:labels="{company: '公司名称',position:'职位',content:'工作内容'}"
+                    title="工作经验"/>
       </li>
       <li v-bind:class="{active: currentTab === 4}">
-        <ItemEditor v-bind:items="resume.fav" v-bind:labels="{item: '项目'}" title="兴趣爱好"/>
+        <ItemEditor v-bind:items="resume().fav" v-bind:labels="{item: '项目'}" title="兴趣爱好"/>
       </li>
     </ul>
 
@@ -38,45 +40,20 @@
 <script>
   import ProfileEditor from './ProfileEditor.vue'
   import ItemEditor from './ItemEditor.vue'
+
   export default {
-    components:{ProfileEditor,ItemEditor},
-    props:['resume'],
+    components: {ProfileEditor, ItemEditor},
+//    props: ['resume'],
     data() {
       return {
         currentTab: 0,
         icon: ['credential', 'xueli', 'skill', 'work', 'fav'],
-        profile: {
-          name: '',
-          region: '',
-          date: '',
-          city: '',
-        },
-        study: [{
-          school: '',
-          degree: '',
-          specialty: '',
-        },],
-        skill: [{
-          type: '',
-          level: '',
-        },],
-        work: [{
-          company: '',
-          position: '',
-          content:''
-        },],
-        fav: [{
-          item: '',
-        },]
       }
-    }, created() {
-      let _this = this
-      setTimeout(function () {
-        console.log(_this.form)
-      }, 10000)
     },
     methods: {
-
+      resume() {
+        return this.$store.state.resume
+      },
     },
   }
 </script>
