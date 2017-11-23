@@ -18,19 +18,19 @@
         <ProfileEditor v-bind:profile="resume.profile"/>
       </li>
       <li v-bind:class="{active: currentTab === 1}">
-        <ItemEditor v-bind:items="resume.study" v-bind:labels="{school: '学校',degree: '学位',specialty: '专业'}"
+        <ItemEditor v-bind:items="resume.study" v-bind:labels="{school: '学校',degree: '学位',specialty: '专业'}" itemKey="study"
                     title="学业情况"/>
       </li>
       <li v-bind:class="{active: currentTab === 2}">
-        <ItemEditor v-bind:items="resume.skill" v-bind:labels="{type: '技能名称',level:'熟练程度'}" title="职业技能"/>
+        <ItemEditor v-bind:items="resume.skill" v-bind:labels="{type: '技能名称',level:'熟练程度'}" itemKey="skill"  title="职业技能"/>
 
       </li>
       <li v-bind:class="{active: currentTab === 3}">
-        <ItemEditor v-bind:items="resume.work" v-bind:labels="{company: '公司名称',position:'职位',content:'工作内容'}"
+        <ItemEditor v-bind:items="resume.work" v-bind:labels="{company: '公司名称',position:'职位',content:'工作内容'}" itemKey="work"
                     title="工作经验"/>
       </li>
       <li v-bind:class="{active: currentTab === 4}">
-        <ItemEditor v-bind:items="resume.fav" v-bind:labels="{item: '项目'}" title="兴趣爱好"/>
+        <ItemEditor v-bind:items="resume.fav" v-bind:labels="{item: '项目'}" title="兴趣爱好" itemKey="fav"/>
       </li>
     </ul>
 
@@ -43,7 +43,6 @@
 
   export default {
     components: {ProfileEditor, ItemEditor},
-//    props: ['resume'],
     computed: {
       icon() {
         return this.$store.state.icon

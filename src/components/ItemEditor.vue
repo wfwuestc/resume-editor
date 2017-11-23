@@ -4,7 +4,7 @@
     <el-form ref="form" label-width="80px">
       <div class="container" v-for="(item,index) in this.items">
         <el-form-item v-for="key in keys" :key="key" v-bind:label="labels[key] || key">
-          <el-input v-model="item[key]"></el-input>
+          <el-input :value="item[key]" @input="changeResume(`${itemKey}.${index}.${key}`,$event)"></el-input>
         </el-form-item>
 
         <i class="el-icon-circle-close-outline" v-on:click="removeItem(index)"></i>
@@ -17,16 +17,16 @@
 
 <script>
   export default {
-    props:["items","labels","title"],
+    props: ["items", "labels", "itemKey","title",],
     computed: {
-      keys(){
+      keys() {
         return Object.keys(this.items[0])
-      }
+      },
     },
     methods: {
       addItem: function () {
         const empty = {}
-        this.keys.map((key)=>{
+        this.keys.map((key) => {
           empty[key] = ''
         })
         console.log(empty)
@@ -35,6 +35,12 @@
       removeItem: function (index) {
         this.items.splice(index, 1)
       },
-    }
+      changeResume(path,value) {
+        this.$store.commit('updateResume', {
+          path,
+          value,
+        })
+      },
+    },
   }
 </script>

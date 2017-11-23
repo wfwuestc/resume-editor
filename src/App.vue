@@ -2,8 +2,8 @@
   <div id="app" v-bind:class="{previewMode: previewMode}">
     <Topbar class="topbar" v-on:preview="preview"/>
     <main>
-      <Editor class="editor" />
-      <Preview />
+      <Editor class="editor"/>
+      <Preview/>
     </main>
   </div>
 </template>
@@ -15,27 +15,32 @@
   import store from './store/index'
 
   export default {
-    data(){
-      return{
-        previewMode: false,
-
-
-      }
-    },
     store,
     components: {
       Topbar, Editor, Preview,
     },
-    methods:{
-      preview(){
-        this.previewMode = true
+    methods: {
+      preview() {
+        return this.$store.commit('switchPreview')
+      },
+    },
+    computed: {
+      previewMode() {
+        return this.$store.state.previewMode
+      },
+    },
+    created() {
+      let state = localStorage.getItem('state')
+      if (state) {
+        state = JSON.parse(state)
       }
-    }
+      this.$store.commit('initState', state)
+    },
   }
 </script>
 
 <style lang="scss">
-  html,body,#app {
+  html, body, #app {
     height: 100%;
     /*overflow: hidden;*/
   }
@@ -49,10 +54,12 @@
     height: 100%;
     background: #DDD;
   }
+
   #app main {
     display: flex;
     flex: 1;
   }
+
   #app.previewMode {
     .topbar {
       display: none;
