@@ -5,7 +5,7 @@ Vue.use(Vuex) //
 
 export default new Vuex.Store({
   state: {
-    resume:{
+    resume: {
       profile: {
         name: '',
         region: '',
@@ -24,14 +24,18 @@ export default new Vuex.Store({
       work: [{
         company: '',
         position: '',
-        content:''
+        content: '',
       },],
       fav: [{
         item: '',
-      },]
-    }
+      },],
+    },
+    currentTab: 0,
+    icon: ['credential', 'xueli', 'skill', 'work', 'fav'],
   },
   mutations: {
-
+    switchTab(state, payload) {
+      state.currentTab = payload // 关于 payload 看这里 http://vuex.vuejs.org/zh-cn/mutations.html#提交载荷（payload）
+    },
   },
 })

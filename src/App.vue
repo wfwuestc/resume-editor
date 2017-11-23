@@ -2,8 +2,8 @@
   <div id="app" v-bind:class="{previewMode: previewMode}">
     <Topbar class="topbar" v-on:preview="preview"/>
     <main>
-      <Editor class="editor" v-bind:resume="resume"/>
-      <Preview v-bind:resume="resume"/>
+      <Editor class="editor" />
+      <Preview />
     </main>
   </div>
 </template>
