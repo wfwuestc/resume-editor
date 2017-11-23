@@ -9,7 +9,7 @@ export default new Vuex.Store({
     resume: {
       profile: {
         name: '',
-        region: '',
+        sex: '',
         date: '',
         city: '',
       },
