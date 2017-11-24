@@ -61,7 +61,7 @@ export default new Vuex.Store({
       console.log(state.user)
     },
     removeUser(state) {
-      state.user.id = null
+      state.user.id = ''
     },
   },
 })
