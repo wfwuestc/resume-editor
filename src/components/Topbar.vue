@@ -1,7 +1,7 @@
 <template>
   <div id="topbar">
     <div class="logo">
-      Resume Editor
+      <h2>Resume Editor</h2>
     </div>
     <div class="action">
       <div v-if="logined" class="userActions">
@@ -10,15 +10,11 @@
       </div>
       <div v-else class="userActions">
         <el-button @click.prevent="signInDialogVisible = true">登录</el-button>
-
         <el-button type="primary" @click.prevent="signUpDialogVisible = true">注册</el-button>
         <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
           <SignUpForm @success="signIn($event)"/>
         </MyDialog>
       </div>
-      <el-button type="primary">保存</el-button>
-      <el-button v-on:click="preview">预览</el-button>
-
     </div>
     <MyDialog title="登录" :visible="signInDialogVisible"
               @close="signInDialogVisible = false">
@@ -27,7 +23,6 @@
     <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
       <SignUpForm @success="signIn($event)"/>
     </MyDialog>
-
   </div>
 </template>
 <style lang="scss">
@@ -39,12 +34,17 @@
     align-items: center;
     box-shadow: 0 0 53px 3px;
     z-index: 1;
+    h2 {
+      font-style:italic;
+      color: rgb(52, 53, 196);
+    }
+    background: linear-gradient(to right, #fccd4d 0%,#fbdf93 0%,#fccd4d 0%,#f8b500 1%,#fceabb 100%);
   }
 
   .action {
     display: flex;
     .userActions {
-      margin-right: 3em;
+
       .welcome {
         margin-right: .5em;
       }

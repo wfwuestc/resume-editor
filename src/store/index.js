@@ -46,7 +46,7 @@ export default new Vuex.Store({
       localStorage.setItem('state', JSON.stringify(state))
     },
     switchPreview(state) {
-      state.previewMode = true // 关于 payload 看这里 http://vuex.vuejs.org/zh-cn/mutations.html#提交载荷（payload）
+      state.previewMode = true
     },
     updateResume(state, {path, value}) {
       console.log(path)

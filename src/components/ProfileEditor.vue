@@ -14,7 +14,9 @@
     </el-form-item>
   </el-form>
 </template>
+<style>
 
+</style>
 <script>
   export default {
     props: ['profile',],
