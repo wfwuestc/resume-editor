@@ -15,7 +15,7 @@
       <!--</div>-->
       <!---->
     <!--</form>-->
-    <el-form ref="form" label-position="labelPosition" id="id-signin-form" label-width="50px">
+    <el-form ref="form" label-position="labelPosition" class="id-signin-form" label-width="50px">
       <el-form-item label="帐号">
         <el-input required v-model="formData.username"></el-input>
       </el-form-item>
@@ -23,7 +23,7 @@
         <el-input required v-model="formData.password" type="password"></el-input>
       </el-form-item>
     </el-form>
-    <el-button type="primary" @click.prevent="signIn" id="id-signin-button">登录</el-button>
+    <el-button type="primary" @click.prevent="signIn" class="id-signin-button">登录</el-button>
   </div>
 </template>
 
@@ -58,13 +58,13 @@
 </script>
 
 <style>
-  #id-signin-form {
+  .id-signin-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  #id-signin-button {
+  .id-signin-button {
     display: block;
     margin: 0 auto;
   }

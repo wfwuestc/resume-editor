@@ -14,7 +14,7 @@
         <!--<span class="errorMessage">{{errorMessage}}</span>-->
       <!--</div>-->
     <!--</form>-->
-    <el-form ref="form" label-position="labelPosition" id="id-signin-form" label-width="50px">
+    <el-form ref="form" label-position="labelPosition" class="id-signin-form" label-width="50px">
       <el-form-item label="帐号">
         <el-input required v-model="formData.username"></el-input>
       </el-form-item>
@@ -22,7 +22,7 @@
         <el-input required v-model="formData.password" type="password"></el-input>
       </el-form-item>
     </el-form>
-    <el-button type="primary" @click.prevent="signUp" id="id-signin-button">注册</el-button>
+    <el-button type="primary" @click.prevent="signUp" class="id-signin-button">注册</el-button>
   </div>
 </template>
 
