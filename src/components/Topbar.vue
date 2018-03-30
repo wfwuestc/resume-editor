@@ -91,20 +91,18 @@
         this.$store.commit('setResume', data)
       },
       saveData() {
-        this.getCurrentUser()
         const Todo = AV.Object.extend('Todo')
         let data = JSON.stringify(this.$store.state.resume)
         if (this.isFirstLogin) {
-          log(1)
-          log(this.todoId)
+
           let todo = AV.Object.createWithoutData('Todo', this.todoId)
           todo.set({data})
-          log(todo)
+
           todo.save().then((response) => {
             successFn && successFn.call(null)
           }, (error) => log(error))
         } else {
-          log(2)
+
           let todo = new Todo()
           let acl = new AV.ACL()
           // 注意这里是 false 公共不可读
@@ -117,7 +115,6 @@
           this.isFirstLogin = true
           todo.save().then((response) => {
             this.todoId = todo.id
-            log('todoid', this.todoId)
           }, function (error) {
             errorFn && errorFn.call(null, error)
           })
@@ -131,11 +128,14 @@
       getData() {
         const query = new AV.Query('Todo')
         query.find().then(todoData => {
-          if (todoData.length === 0) {
+
+          if (todoData.length == 0) {
             this.isFirstLogin = false
             this.saveData()
+
             return
           }
+
           let data = JSON.parse(todoData[0].attributes.data)
           this.$store.commit('setResume', data)
         }, () => {
