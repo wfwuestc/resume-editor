@@ -39,15 +39,15 @@
   }
   .dialog{
     background: white;
-    min-height: 4em;
-    min-width: 10em;
+    height: 16em;
+    width: 23em;
     > header{
       padding: 16px;
       display: flex;
       justify-content: space-between;
     }
     > main{
-      padding: 16px;
+      width: 100%;
     }
   }
 </style>
