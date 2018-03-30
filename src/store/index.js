@@ -17,19 +17,19 @@ export default new Vuex.Store({
         school: '',
         degree: '',
         specialty: '',
-      },],
+      }],
       skill: [{
         type: '',
         level: '',
-      },],
+      }],
       work: [{
         company: '',
         position: '',
         content: '',
-      },],
+      }],
       fav: [{
         item: '',
-      },],
+      }],
 
     },
     user: {
@@ -51,7 +51,7 @@ export default new Vuex.Store({
     updateResume(state, {path, value}) {
       console.log(path)
       objectPath.set(state.resume, path, value)
-      localStorage.setItem('state', JSON.stringify(state))
+      // localStorage.setItem('state', JSON.stringify(state))
     },
     initState(state, payload) {
       Object.assign(state, payload)
@@ -59,6 +59,9 @@ export default new Vuex.Store({
     setUser(state, payload) {
       Object.assign(state.user, payload)
       console.log(state.user)
+    },
+    setResume(state, payload) {
+      Object.assign(state.resume, payload)
     },
     removeUser(state) {
       state.user.id = ''

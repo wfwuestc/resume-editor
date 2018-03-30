@@ -21,26 +21,34 @@
   import AV from '../lib/leancloud'
   import getErrorMessage from '../lib/getErrorMessage'
   import getAVUser from '../lib/getAVUser'
+  var log = console.log.bind(console)
   export default {
     name: 'SignInForm',
-    data(){
+    data() {
       return {
         formData: {
           username: '',
-          password: ''
+          password: '',
         },
-        errorMessage: ''
+        errorMessage: '',
       }
     },
     methods: {
-      signIn(){
+      signIn() {
         let {username, password} = this.formData
-        AV.User.logIn(username,password).then(()=> {
+        AV.User.logIn(username, password).then(() => {
           this.$emit('success', getAVUser())
-        }, (error)=> {
+        }, (error) => {
           this.errorMessage = getErrorMessage(error)
-        });
+        })
+      },
+      getData() {
+        const query = new AV.Query('Todo')
+        query.find().then(todoData => {
+          let data = todoData[0]
+
+        }, () => this.showMessage('获取数据失败', 'error'))
       }
-    }
+    },
   }
 </script>

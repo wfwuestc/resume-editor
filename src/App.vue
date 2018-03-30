@@ -61,6 +61,8 @@
   #app main {
     display: flex;
     flex: 1;
+    width: 1300px;
+    margin: auto;
   }
 
   #app.previewMode {
