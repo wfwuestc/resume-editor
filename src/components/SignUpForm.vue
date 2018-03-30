@@ -22,7 +22,7 @@
         <el-input required v-model="formData.password" type="password"></el-input>
       </el-form-item>
     </el-form>
-    <el-button type="primary" @click.prevent="signIn" id="id-signin-button">注册</el-button>
+    <el-button type="primary" @click.prevent="signUp" id="id-signin-button">注册</el-button>
   </div>
 </template>
 
