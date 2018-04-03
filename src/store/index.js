@@ -10,8 +10,9 @@ export default new Vuex.Store({
       profile: {
         name: '',
         sex: '',
-        date: '',
+        date: undefined,
         city: '',
+        phone:'',
       },
       study: [{
         school: '',
@@ -49,7 +50,10 @@ export default new Vuex.Store({
       state.previewMode = true
     },
     updateResume(state, {path, value}) {
-      console.log(path)
+      console.log(value instanceof Date)
+      if (value instanceof Date) {
+        value = value.getFullYear() + '-' + (value.getMonth() + 1) + '-' + value.getDate()
+      }
       objectPath.set(state.resume, path, value)
       // localStorage.setItem('state', JSON.stringify(state))
     },

@@ -1,7 +1,10 @@
 <template>
   <div id="preview">
-    <h1>{{resume().profile.name || '请填写姓名'}}</h1>
-    <p>{{resume().profile.city || '请填写城市'}}</p>
+    <h1>{{resume().profile.name}}</h1>
+    <p>城市：{{resume().profile.city}}</p>
+    <p>性别：{{resume().profile.sex}}</p>
+    <p>生日：{{resume().profile.date}}</p>
+    <p>电话：{{resume().profile.phone}}</p>
     <section v-if="filter(resume().study).length>0">
       <h2>学习经历</h2>
       <hr>
