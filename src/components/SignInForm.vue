@@ -65,7 +65,7 @@
     align-items: center;
   }
   .id-signin-button {
-    display: block;
-    margin: 0 auto;
+    display: block !important;
+    margin: 0 auto !important;
   }
 </style>
