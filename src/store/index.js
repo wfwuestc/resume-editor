@@ -50,7 +50,6 @@ export default new Vuex.Store({
       state.previewMode = true
     },
     updateResume(state, {path, value}) {
-      console.log(value instanceof Date)
       if (value instanceof Date) {
         value = value.getFullYear() + '-' + (value.getMonth() + 1) + '-' + value.getDate()
       }
@@ -62,7 +61,6 @@ export default new Vuex.Store({
     },
     setUser(state, payload) {
       Object.assign(state.user, payload)
-      console.log(state.user)
     },
     setResume(state, payload) {
       Object.assign(state.resume, payload)

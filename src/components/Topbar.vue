@@ -14,9 +14,9 @@
         <div v-else class="userActions">
           <el-button @click.prevent="signInDialogVisible = true">登录</el-button>
           <el-button type="primary" @click.prevent="signUpDialogVisible = true">注册</el-button>
-          <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-            <SignUpForm @success="signIn($event)"/>
-          </MyDialog>
+          <!--<MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">-->
+            <!--<SignUpForm @success="signIn($event)"/>-->
+          <!--</MyDialog>-->
         </div>
       </div>
       <MyDialog title="登录" :visible="signInDialogVisible"
@@ -79,9 +79,7 @@
       signIn(user) {
         this.signUpDialogVisible = false
         this.signInDialogVisible = false
-
         this.getData()
-        log('signin')
         this.$store.commit('setUser', user)
       },
       signOut() {
@@ -93,11 +91,9 @@
       saveData() {
         const Todo = AV.Object.extend('Todo')
         let data = JSON.stringify(this.$store.state.resume)
-        if (this.isFirstLogin) {
-
+        if (!this.isFirstLogin) {
           let todo = AV.Object.createWithoutData('Todo', this.todoId)
           todo.set({data})
-
           todo.save().then((response) => {
             successFn && successFn.call(null)
           }, (error) => log(error))
@@ -112,7 +108,7 @@
           acl.setReadAccess(AV.User.current(), true)
           todo.setACL(acl)//应用acl
           todo.set({data})
-          this.isFirstLogin = true
+          this.isFirstLogin = false
           todo.save().then((response) => {
             this.todoId = todo.id
           }, function (error) {
@@ -128,15 +124,14 @@
       getData() {
         const query = new AV.Query('Todo')
         query.find().then(todoData => {
-
           if (todoData.length == 0) {
-            this.isFirstLogin = false
+            this.isFirstLogin = true
             this.saveData()
-
             return
           }
-
           let data = JSON.parse(todoData[0].attributes.data)
+          let todoId = todoData[0].id
+          this.todoId = todoId
           this.$store.commit('setResume', data)
         }, () => {
           log('error')
@@ -148,7 +143,7 @@
       return {
         signUpDialogVisible: false,
         signInDialogVisible: false,
-        isFirstLogin: true,
+        isFirstLogin: false,
         todoId: '',
         emptyResume: '',
       }
